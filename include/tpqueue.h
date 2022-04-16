@@ -6,9 +6,9 @@
 template<typename T, int size>
 class TPQueue {
  private:
-  T arr[size];
+  T arr[50];
   int first, last;
-  
+
  public:
     TPQueue(): first(0), last(0) {}
     void push(T znach) {
@@ -29,8 +29,8 @@ class TPQueue {
          throw std::string("Is empty!!!");
       } else {
         return arr[(first++) % size];
-     }
-   }
+    }
+  }
 };
 
 struct SYM {
