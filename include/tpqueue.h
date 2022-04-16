@@ -8,26 +8,27 @@ class TPQueue {
  private:
   T arr[size];
   int first, last;
+  
  public:
-  TPQueue(): first(0), last(0) {}
-  void push(T znach) {
-  if (last - first >= size) {
-    throw std::string("Is full!!!");
-  } else {
-    int n = last - 1;
-    while (n >= first && znach.prior > arr[n % size].prior) {
-      arr[(n + 1) % size] = arr[n % size];
-      n--;
+    TPQueue(): first(0), last(0) {}
+    void push(T znach) {
+      if (last - first >= size) {
+        throw std::string("Is full!!!");
+      } else {
+        int n = last - 1;
+        while (n >= first && znach.prior > arr[n % size].prior) {
+          arr[(n + 1) % size] = arr[n % size];
+          n--;
+        }
+        arr[(n + 1) % size] = znach;
+        last++;
+      }
     }
-    arr[(n + 1) % size] = znach;
-    last++;
-    }
-   }
-   T pop() {
-     if (first == last) {
-       throw std::string("Is empty!!!");
-     } else {
-       return arr[(first++) % size];
+    T pop() {
+      if (first == last) {
+         throw std::string("Is empty!!!");
+      } else {
+        return arr[(first++) % size];
      }
    }
 };
